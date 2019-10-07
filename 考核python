@@ -1,0 +1,69 @@
+I='S'
+O=input("输入S开始使用计算器\n")
+while O in I :
+    X=input("给出一个需要计算的式子（请按照运算符格式）\n")
+    J=eval("%s"%X)
+    print("计算结果为%s\n运算结束，数据返回初始值，开始下一运算\n"%J)
+    break
+
+
+O=input("输入S以开始使用日期换算器\n")
+while O in I:
+    X = int(input("输入年(数字)\n"))
+    Y = int(input("输入月(数字)\n"))
+    Z = int(input("输入日(数字)\n"))
+    J = int()
+    if Y>12 or Z>31:
+        print("输入数值不规范\n")
+    elif ((X%4==0 and X%100!=0) or (X%400==0)) :
+        if Y==1:
+            J=Z
+        elif Y==2:
+            J=31+Z
+        elif Y==3:
+            J=60+Z
+        elif Y==4 or 6 or 8:
+            n=Y//2
+            J=(n-1)*30+(Y-n)*31+Z-2
+        elif Y==9 or 11: 
+            n=Y-1//2
+            J=(n-1)*30+(Y-n)*31+Z-2
+        elif Y==5 or 7:
+            n=(Y-1)//2
+            J=n*30+(Y-n-1)*31+Z-2
+        elif Y==10 or 12:
+            n=(Y-2)//2
+            J=n*30+(Y-n-1)*31+Z-2
+        print("是公历第%s(闰)年中的第%s天\n运算结束，数据返回初始值,开始下一计算\n"%(X,J))
+        break
+    else :
+        if Y==1:
+            J=Z
+        elif Y==2:
+            J=3+Z
+        elif Y==3:
+            J=59+Z
+        elif Y==4 or 6 or 8:
+            n=Y//2
+            J=(n-1)*30+(Y-n)*31+Z-3
+        elif Y==9 or 11: 
+            n=Y-1//2
+            J=(n-1)*30+(Y-n)*31+Z-3
+        elif Y==5 or 7:
+            n=(Y-1)//2
+            J=n*30+(Y-n-1)*31+Z-3
+        elif Y==10 or 12:
+            n=(Y-2)//2
+            J=n*30+(Y-n-1)*31+Z-3
+        print("是公历第%s(平)年中的第%s天\n运算结束，数据返回初始值,开始下一计算\n"%(X,J))
+        break
+
+
+
+import calendar
+
+Year = int(input("输入年份: "))
+Month = int(input("输入月份: "))
+calendar.setfirstweekday(firstweekday=6)
+
+print(calendar.month(Year, Month))
